@@ -155,10 +155,13 @@ async function loadMoreSearch() {
     } catch (error) {
       console.error("Error loading more pictures:", error);
     }
-      const cardHeight = refs.resultContainer.querySelector('.image-container').getBoundingClientRect().height;
+    const lastImageContainer = refs.resultContainer.lastElementChild;
+    if (lastImageContainer) {
+      const cardHeight = lastImageContainer.getBoundingClientRect().height;
       window.scrollBy({
-      top: cardHeight * perPage,
-      behavior: 'smooth',
-    });
+        top: cardHeight * perPage,
+        behavior: 'smooth',
+      });
+    }
   }
   
